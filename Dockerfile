@@ -31,5 +31,9 @@ RUN ln -s /usr/local/apache-kafka/kafka_2.11-0.9.0.1/config /config
 ADD kafka-bin.py /app/bin/
 ADD kafka-init /app/bin/
 
-WORKDIR /usr/local/apache-kafka/current
-CMD ["/usr/local/apache-kafka/current/bin/kafka-server-start.sh /usr/local/apache-kafka/current/config/server.properties"]
+# supervisord
+RUN wget http://peak.telecommunity.com/dist/ez_setup.py;python ez_setup.py \
+  && easy_install supervisor
+ADD supervisord.conf /etc/supervisord.conf
+
+CMD ["/usr/bin/supervisord"]
