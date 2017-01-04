@@ -32,4 +32,4 @@ ADD kafka-bin.py /app/bin/
 ADD kafka-init /app/bin/
 
 WORKDIR /usr/local/apache-kafka/current
-CMD ["./bin/kafka-start-server.sh ./config/server.properties"]
+CMD ["/usr/local/apache-kafka/current/bin/kafka-server-start.sh /usr/local/apache-kafka/current/config/server.properties"]
